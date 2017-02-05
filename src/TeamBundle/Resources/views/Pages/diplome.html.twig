@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Our Member '{{ diplome.member.name }}' diplome{% endblock %}
+
+{% block body %}
+    <h1>'{{ diplome.member.name }}' Member's Diplome: '{{ diplome.titre }}'</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Type</td>
+                <td>{{ diplome.diplome.diplome }}</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>{{ diplome.year }}</td>
+            </tr>
+            <tr>
+                <td>Mention</td>
+                <td>{{ diplome.mention }}</td>
+            </tr>
+            <tr>
+                <td>Member</td>
+                <td><a href="{{ path('member', { id: diplome.member.id }) }}">{{ diplome.member.name }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

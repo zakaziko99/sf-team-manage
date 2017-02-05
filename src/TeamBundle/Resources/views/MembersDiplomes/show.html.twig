@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Our Member '{{ diplome.member.name }}' diplome{% endblock %}
+
+{% block body %}
+    <h1>'{{ diplome.member.name }}' Member's Diplome: '{{ diplome.titre }}'</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Type</td>
+                <td>{{ diplome.diplome.diplome }}</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>{{ diplome.year }}</td>
+            </tr>
+            <tr>
+                <td>Mention</td>
+                <td>{{ diplome.mention }}</td>
+            </tr>
+            <tr>
+                <td>Member</td>
+                <td><a href="{{ path('members_show', { id: diplome.member.id }) }}">{{ diplome.member.name }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <a href="{{ path('diplomes_list') }}">Back to the diplomes list</a>
+        {{ form_start(delete_form, { attr: { class: 'pull-right' } }) }}
+        <button type="submit" class="btn btn-danger">Delete Diplome</button>
+        <a href="{{ path('diplomes_edit', { id: diplome.id }) }}" class="btn btn-info">Edit Diplome</a>
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

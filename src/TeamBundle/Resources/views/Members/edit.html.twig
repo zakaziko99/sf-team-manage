@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Edit member '{{ member.name }}'{% endblock %}
+
+{% block body %}
+    <h1>Edit Member '{{ member.name }}'</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <button type="submit" class="btn btn-success">Edit Member</button>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <a href="{{ path('members_list') }}">Back to the members list</a>
+        {{ form_start(delete_form, { attr: { class: 'pull-right' } }) }}
+        <button type="submit" class="btn btn-danger">Delete Member</button>
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Edit diplome '{{ diplome.titre }}'{% endblock %}
+
+{% block body %}
+    <h1>Edit Diplome '{{ diplome.titre }}'</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <button type="submit" class="btn btn-success">Edit Diplome</button>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <a href="{{ path('diplomes_list') }}">Back to the diplomes list</a>
+        {{ form_start(delete_form, { attr: { class: 'pull-right' } }) }}
+        <button type="submit" class="btn btn-danger">Delete Diplome</button>
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

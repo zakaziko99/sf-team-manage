@@ -1,0 +1,4 @@
+team:
+    resource: "@TeamBundle/Controller/"
+    type:     annotation
+    prefix:   /

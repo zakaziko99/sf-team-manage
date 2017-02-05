@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Our team list{% endblock %}
+
+{% block body %}
+    <h1>Our Team List</h1>
+
+    <div class="row">
+        <div class="pull-right">
+            {{ form_start(formSearch, { attr: { class: 'form-inline' } }) }}
+            {{ form_widget(formSearch.search, { attr: { placeholder: 'Search Members' } }) }}
+            <button type="submit" class="btn">Search</button>
+            {{ form_end(formSearch) }}
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td><a href="{{ path('members_show', { id: member.id }) }}">{{ member.name }}</a></td>
+                <td>{{ member.role }}</td>
+                <td>
+                    <a href="{{ path('members_edit', { 'id': member.id }) }}"><span
+                        class="glyphicon glyphicon-edit"></span> Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row">
+        <a href="{{ path('members_new') }}" class="btn btn-info pull-right">Add New Member</a>
+    </div>
+{% endblock %}

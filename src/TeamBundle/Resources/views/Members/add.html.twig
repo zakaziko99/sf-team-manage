@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Add new member{% endblock %}
+
+{% block body %}
+    <h1>Add New Member</h1>
+    <p>Please, fill the fields below:</p>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-success">Add Member</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="row text-right">
+        <a href="{{ path('members_list') }}">Back to the members list</a>
+    </div>
+{% endblock %}

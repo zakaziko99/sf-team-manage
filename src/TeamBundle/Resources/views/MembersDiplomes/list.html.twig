@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TeamManager: Our member's diplomes list{% endblock %}
+
+{% block body %}
+    <h1>Our Member's Diplomes List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Diplome</th>
+                <th>Title</th>
+                <th>Mention</th>
+                <th>Member</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for diplome in diplomes %}
+            <tr>
+                <td>{{ diplome.year }}</td>
+                <td>{{ diplome.diplome.diplome }}</td>
+                <td><a href="{{ path('diplomes_show', { id: diplome.id }) }}">{{ diplome.titre }}</a></td>
+                <td>{{ diplome.mention }}</td>
+                <td><a href="{{ path('members_show', { id: diplome.member.id }) }}">{{ diplome.member.name }}</a></td>
+                <td>
+                    <a href="{{ path('diplomes_edit', { 'id': diplome.id }) }}"><span
+                        class="glyphicon glyphicon-edit"></span> Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row">
+        <a href="{{ path('diplomes_new') }}" class="btn btn-info pull-right">Add New Diplome</a>
+    </div>
+{% endblock %}
