@@ -25,12 +25,10 @@ class MembersDiplomesController extends Controller
      */
     public function listAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $diplomes = $em->getRepository('TeamBundle:MembersDiplomes')->findAll();
-
         return [
-                'diplomes' => $diplomes
+                'diplomes' => $this->getDoctrine()->getManager()
+                                ->getRepository('TeamBundle:MembersDiplomes')
+                                ->findAll()
             ];
     }
 
